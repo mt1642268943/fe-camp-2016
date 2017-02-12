@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业01</title>
+</head>
+<body>
+<div class="box">
+    <input type=text id=test onkeyup="c()">
+    <button class="button" id="button">登录</button>
+</div>
+<script>
+    var button=document.getElementById("button");
+    button.onclick=function(){
+        var x,m;
+        m=0;
+        x=document.getElementById("test").value.toUpperCase();
+        for(var i=0;i< x.length;i++) {
+            if(x[i]=="-") {
+                m++;
+            }
+        }
+        if(x.length!=20+m)
+            alert("无效的密码格式！")
+        else {
+
+            String.prototype.replaceAll = function (findText, repText){
+                var newRegExp = new RegExp(findText, 'gm');
+                return this.replace(newRegExp, repText);
+            };
+            var findText = '-';
+            var repText = '';
+            x = x.replaceAll(findText, repText);
+            alert(x);
+        }
+    }
+</script>
+</body>
+</html>

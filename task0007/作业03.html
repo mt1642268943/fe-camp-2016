@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>以下输出2017年的每个星期三是2月几号及它们距离今天还有多少天</h1>
+<script>
+    var i;
+    var d = new Date();
+    var djs=new Array;
+    djs[0]="1+7-(d.getDay()-3)";
+    var weekday=new Array(7);
+    weekday[0]="周日";
+    weekday[1]="周一";
+    weekday[2]="周二";
+    weekday[3]="周三";
+    weekday[4]="周四";
+    weekday[5]="周五";
+    weekday[6]="周六";
+    for(i=1;i<=28;i+=7){
+        djs[i]= {
+            "date:2017/2/"+i+7-(d.getDay()-3),
+            "daysBefore:"+i+7-(d.getDay()-3)- d.getDate()
+        }
+
+    }
+    document.write(djs);
+</script>
+</body>
+</html>

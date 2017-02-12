@@ -1,0 +1,43 @@
+<!--给定两个数组，写一个函数来计算它们的交集。
+
+示例：
+给定nums1 = [1, 2, 2, 1]，nums2 = [2, 2]，return [2]。
+
+注意：
+结果中的每个元素必须是唯一的。
+结果可以是任何顺序。-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业04的01</title>
+</head>
+<body>
+<div class="box">
+    <input type="text" id="test1">
+    <input type="text" id="test2">
+    <button class="button" id="button">登录</button>
+</div>
+<script>
+    var nums1=document.getElementById("test1");
+    var nums2=document.getElementById("test2");
+    var intersection = function(nums1, nums2) {
+        var ai=0, bi=0;
+        var result = new Array();
+        while( ai < nums1.length && bi < nums2.length )
+        {
+            if (nums1[ai] < nums2[bi] ){ ai++; }
+            else if (nums1[ai] > nums2[bi] ){ bi++; }
+            else
+            {
+                result.push(nums1[ai]);
+                ai++;
+                bi++;
+            }
+        }
+        return result;
+        alert(result);
+    };
+</script>
+</body>
+</html>

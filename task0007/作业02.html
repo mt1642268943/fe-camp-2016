@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的第二个作业</title>
+</head>
+<body>
+<script>
+    var b=new   Array();
+    var j,m,i=0;
+    for(j=0;;j++){
+            b[j]=prompt('输入第'+(j+1)+'项兴趣内容（输入"0"代表结束）');
+        i++;
+        if(b[j]==0||b[j]=="")
+        break;
+    }
+    for(j=0;j<i;j++){
+        for(m=j+1;m<i;m++){
+            if(b[j]==b[m]){
+                b[m]="";
+            }
+        }
+    }
+    alert(b);
+</script>
+</body>
+</html>
