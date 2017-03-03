@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据视图双向绑定的封装</title>
+</head>
+<body>
+<input q-value="value" type="text" id="input">
+<div q-text="value" id="el"></div>
+<script>
+    var elems = [document.getElementById('el'), document.getElementById('input')];
+    var data = {
+        value: 'hello world!'
+    };
+    var command = {
+        text: function(str){
+            this.innerHTML = str;
+        },
+        value: function(str){
+            this.setAttribute('value', str);
+        }
+    };
+    var scan = function(){
+        for(var i = 0, len = elems.length; i < len; i++){
+            var elem = elems[i];
+            elem.command = [];
+            for(var j = 0, len1 = elem.attributes.length; j < len1; j++){
+                var attr = elem.attributes[j];
+                if(attr.nodeName.indexOf('q-') >= 0){
+                    command[attr.nodeName.slice(2)].call(elem, data[attr.nodeValue]);
+                    elem.command.push(attr.nodeName.slice(2));
+                }
+            }
+        }
+    }
+    function mvSet(key, value){
+        data[key] = value;
+        scan();
+    }
+    elems[1].addEventListener('keyup', function(e){
+        mvSet('value', e.target.value);
+    }, false);
+    scan();
+    setTimeout(function(){
+        mvSet('value', 'Brave New World!');
+    },1000)
+</script>
+</body>
+</html>
